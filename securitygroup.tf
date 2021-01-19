@@ -1,5 +1,5 @@
 resource "aws_security_group" "myinstance" {
-  vpc_id = "aws_vpc.main.id 
+  vpc_id = aws_vpc.main.id
   name        = "myinstance"
   description = "security group for my instance"
   egress {
@@ -26,9 +26,8 @@ tags = {
 }
 resource "aws_security_group" "elb-securitygroup" {
   name        = "elb"
-  description = "security group for load balancer"
   vpc_id      = aws_vpc.main.id
-
+  description = "security group for load balancer"
   ingress {
     description = "allow-loadbalancer on port 80"
     from_port   = 80
