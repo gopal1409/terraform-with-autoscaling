@@ -5,7 +5,7 @@ resource "aws_security_group" "myinstance" {
   egress {
     from_port   = 0
     to_port     = 0
-    protocol    = "tcp"
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
@@ -18,7 +18,7 @@ resource "aws_security_group" "myinstance" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    security_groups = [aws_security_group.elb-securitygroup.id]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 tags = {
     Name = "myinstance"
@@ -38,7 +38,7 @@ resource "aws_security_group" "elb-securitygroup" {
   egress {
     from_port   = 0
     to_port     = 0
-    protocol    = "tcp"
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
